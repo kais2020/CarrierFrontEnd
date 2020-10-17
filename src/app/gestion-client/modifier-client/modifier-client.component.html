@@ -1,0 +1,27 @@
+<table class="table">
+  <thead class="thead-dark">
+  <tr>
+    <th scope="col">Id</th>
+    <th scope="col">Code</th>
+    <th scope="col">Nom</th>
+    <th scope="col">Code TVA</th>
+    <th scope="col">Adresse</th>
+    <th scope="col">ville</th>
+    <th scope="col"></th>
+    <th scope="col"></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let client of clients; let i = index">
+    <td>{{client.id}}</td>
+    <td>{{client.code}}</td>
+    <td>{{client.nom}}</td>
+    <td>{{client.codetva}}</td>
+    <td>{{client.adresse}}</td>
+    <td>{{client.ville}}</td>
+    <td><a>Modifier</a></td>
+    <td><a>Delete</a></td>
+  </tr>
+  </tbody>
+</table>
+

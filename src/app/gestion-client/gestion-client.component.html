@@ -1,0 +1,17 @@
+<a routerLink="/nouveau-client">Nouveau Client</a>
+<ul class="list-group" *ngFor="let client of clients">
+  <li class="list-group-item">
+    <div class="navbar-right">
+      <button class="btn btn-success">Edit</button>
+      <button class="btn btn-danger">Delete</button>
+    </div>
+    <h3> {{client.code}} : {{client.nom}}</h3>
+    <p>Identifiant : {{client.id}}</p>
+    <p>Adresse : {{client.adresse}} -- {{client.ville}}</p>
+    <p *ngIf="client.tels && client.tels.length>0">
+      Tél :
+      <span *ngFor="let tel of client.tels">{{tel}} - </span>
+    </p>
+
+  </li>
+</ul>

@@ -28,6 +28,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/bootstrap/dist/css/bootstrap.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -123,6 +124,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "carrier"
+    }
+  },
+  "defaultProject": "carrier",
+  "cli": {
+    "analytics": "83df5c8f-2324-4f53-9fc4-078daf739194"
+  }
 }

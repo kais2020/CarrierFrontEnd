@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="col-sm-8 col-sm-offset-2">
+    <form [formGroup]="clientForm" (ngSubmit)="onSubmitForm()" >
+      <div class="form-group">
+        <label for="id">Id</label>
+        <input type="number" id="id" class="form-control" formControlName="id">
+      </div>
+      <div class="form-group">
+        <label for="code">Code</label>
+        <input type="text" id="code" class="form-control" formControlName="code">
+      </div>
+      <div class="form-group">
+        <label for="nom">Nom</label>
+        <input type="text" id="nom" class="form-control" formControlName="nom">
+      </div>
+      <div class="form-group">
+        <label for="codeTVA">Code TVA</label>
+        <input type="text" id="codetva" class="form-control" formControlName="codetva">
+      </div>
+      <div class="form-group">
+        <label for="adresse">Adresse</label>
+        <input type="text" id="adresse" class="form-control" formControlName="adresse">
+      </div>
+      <div class="form-group">
+        <label for="ville">Ville</label>
+        <input type="text" id="ville" class="form-control" formControlName="ville">
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="clientForm.invalid">Enregistrer</button>
+    </form>
+  </div>
+</div>
