@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ProduitService} from "../../services/produit.service";
 import {Router} from "@angular/router";
 import {ProduitModel} from "../../model/produit.model";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-nouveau-produit',
@@ -22,9 +23,9 @@ export class NouveauProduitComponent implements OnInit {
   initForm(){
     this.produitForm=this.formBuilder.group({
       id:'',
-      code:'',
-      nom:'',
-      prix:''
+      code:['',Validators.required],
+      nom:['',Validators.required],
+      prix:['',Validators.required]
     });
   }
   onSubmitForm(){

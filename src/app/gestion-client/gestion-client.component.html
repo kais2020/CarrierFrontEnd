@@ -3,15 +3,12 @@
   <li class="list-group-item">
     <div class="navbar-right">
       <button class="btn btn-success">Edit</button>
-      <button class="btn btn-danger">Delete</button>
+      <button class="btn btn-danger" (click)="deleteClient(client.id)">Delete</button>
     </div>
     <h3> {{client.code}} : {{client.nom}}</h3>
-    <p>Identifiant : {{client.id}}</p>
+    <p>Identifiant : {{client.id}} -- Code TVA : {{client.codeTVA}}</p>
     <p>Adresse : {{client.adresse}} -- {{client.ville}}</p>
-    <p *ngIf="client.tels && client.tels.length>0">
-      Tél :
-      <span *ngFor="let tel of client.tels">{{tel}} - </span>
-    </p>
+
 
   </li>
 </ul>

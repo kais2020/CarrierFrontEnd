@@ -1,16 +1,12 @@
-<div class="container">
-  <nav>
-    <ul class="nav">
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/nouveau-produit-component" routerLinkActive="active">Nouveau Produit</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/modifier-produit-component" routerLinkActive="active">Modifier Produit</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/liste-produit-component" routerLinkActive="active">Liste Produits</a>
-      </li>
-
-    </ul>
-  </nav>
-</div>
+<a routerLink="/nouveau-produit">Nouveau Produit</a>
+<ul class="list-group" *ngFor="let produit of produits">
+  <li class="list-group-item">
+    <div class="navbar-right">
+      <button class="btn btn-success" (click)="modifierProduit()">Edit</button>
+      <button class="btn btn-danger" (click)="deleteProduit(produit.id)">Delete</button>
+    </div>
+    <h3>{{produit.code}} -- {{produit.nom}}</h3>
+    <p>Identifient : {{produit.id}}</p>
+    <p>Prix : {{produit.prix}}</p>
+  </li>
+</ul>

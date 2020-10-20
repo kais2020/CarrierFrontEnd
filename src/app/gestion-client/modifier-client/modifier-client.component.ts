@@ -24,7 +24,7 @@ export class ModifierClientComponent implements OnInit {
         this.clients=clients
       }
     );
-    this.clientService.emiClients();
+    this.clientService.emiClientsSubject();
   }
 
 

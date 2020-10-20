@@ -8,7 +8,6 @@ import {NouveauClientComponent} from "./gestion-client/nouveau-client/nouveau-cl
 import {ModifierClientComponent} from "./gestion-client/modifier-client/modifier-client.component";
 import {NouveauProduitComponent} from "./gestion-produit/nouveau-produit/nouveau-produit.component";
 import {ModifierProduitComponent} from "./gestion-produit/modifier-produit/modifier-produit.component";
-import {ListProduitComponent} from "./gestion-produit/list-produit/list-produit.component";
 import {ListCamionComponent} from "./gestion-camion/list-camion/list-camion.component";
 import {NouveauCamionComponent} from "./gestion-camion/nouveau-camion/nouveau-camion.component";
 import {ModifierCamionComponent} from "./gestion-camion/modifier-camion/modifier-camion.component";
@@ -29,7 +28,6 @@ const routes: Routes = [
   { path: 'modifier-produit' , component: ModifierProduitComponent },
   { path: 'nouveau-produit' , component: NouveauProduitComponent },
   { path: 'liste-client/:id' , component: SingleClientComponent},
-  { path: 'liste-produit' , component: ListProduitComponent },
   { path: 'liste-camion' , component: ListCamionComponent },
   { path: 'nouveau-camion' , component: NouveauCamionComponent },
   { path: 'modifier-camion' , component: ModifierCamionComponent },

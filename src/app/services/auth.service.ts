@@ -12,7 +12,7 @@ export class AuthService {
       setTimeout(()=>{
         this.isAuth=true;
         resolve(true);
-      },4000)
+      },1000)
     }))
   }
   signOut(){

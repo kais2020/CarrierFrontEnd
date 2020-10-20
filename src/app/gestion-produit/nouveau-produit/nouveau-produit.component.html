@@ -1,22 +1,19 @@
-
-<form class="container" name="mon-formulaire1" action="page-envoi.html" method="get">
-  <p>Nouveau Produit</p>
-  <p>
-    Code :<br />
-    <input type="text" name="code" value="" />
-  </p>
-  <p>
-    Nom :<br />
-    <input type="text" name="nom" value="" />
-  </p>
-  <p>
-    Prix :<br />
-    <input type="text" name="prix" value="" />
-  </p>
-
-
-  <p>
-    <input type="submit" value="Envoyer" />
-    <input type="reset" value="Annuler" />
-  </p>
-</form>
+<div class="row">
+  <div class="col-sm-8 col-sm-offset-2">
+    <form [formGroup]="produitForm" (ngSubmit)="onSubmitForm()">
+      <div class="form-group">
+        <label for="code">Code</label>
+        <input type="text" id="code" class="form-control" formControlName="code">
+      </div>
+      <div class="form-group">
+        <label for="nom">Nom</label>
+        <input type="text" id="nom" class="form-control" formControlName="nom">
+      </div>
+      <div class="form-group">
+        <label for="prix">Prix</label>
+        <input type="number" id="prix" class="form-control" formControlName="prix">
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="produitForm.invalid">Enregistrer</button>
+    </form>
+  </div>
+</div>

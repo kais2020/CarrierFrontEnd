@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, NgForm, Validators} from "@angular/forms";
+import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ClientService} from "../../services/client.service";
 import {Router} from "@angular/router";
 import {ClientModel} from "../../model/client.model";
@@ -21,12 +21,14 @@ export class NouveauClientComponent implements OnInit {
   }
   initForm(){
     this.clientForm=this.formBuilder.group({
-      id:['',Validators.required],
+      id:'',
       code:['',Validators.required],
       nom:['',Validators.required],
-      codetva:['',Validators.required],
       adresse:['',Validators.required],
-      ville:['',Validators.required]
+      ville:['',Validators.required],
+      codeTVA:['',Validators.required]
+
+      /*tels:this.formBuilder.array([])*/
     });
   }
 
@@ -36,12 +38,15 @@ export class NouveauClientComponent implements OnInit {
       formValue['id'],
       formValue['code'],
       formValue['nom'],
-      formValue['codetva'],
       formValue['adresse'],
-      formValue['ville']
+      formValue['ville'],
+      formValue['codeTVA']
+
     );
     this.clientService.addClient(newClient);
     this.router.navigate(['/gestion-client']);
 
   }
+
+
 }
