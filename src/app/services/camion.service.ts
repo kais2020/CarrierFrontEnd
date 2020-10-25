@@ -17,10 +17,17 @@ export class CamionService {
     this.camionSubject.next(this.camions);
   }
   getAllCamion(){
-    this.httpClient.get<CamionModel[]>('htttp://localhost:9090/camions')
+    this.httpClient.get<CamionModel[]>('http://localhost:9090/camions')
       .subscribe(resp=>{
         this.camions=resp;
         this.emiCamionSubject()});
+  }
+  addCamion(camion :CamionModel){
+    this.httpClient.post('http://localhost:9090/camions',camion)
+      .subscribe(resp=>{
+        this.getAllCamion();
+        this.emiCamionSubject()}
+      ,error => alert("Erreur : "+error));
   }
 
 }

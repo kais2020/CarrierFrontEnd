@@ -1,1 +1,23 @@
-<p>nouveau-camion works!</p>
+<div class="row">
+  <div class="col-sm-8 col-sm-offset-2">
+    <form [formGroup]="camionForm" (ngSubmit)="onSubmitForm()">
+      <div class="form-group">
+        <label for="code">Code</label>
+        <input type="text" class="form-control" id="code" formControlName="code">
+      </div>
+      <div class="form-group">
+        <label for="matricule">Matricule</label>
+        <input type="text" class="form-control" id="matricule" formControlName="matricule">
+      </div>
+      <div class="form-group">
+        <label for="marque">Marque</label>
+        <input type="text" class="form-control" id="marque" formControlName="marque">
+      </div>
+      <div class="form-group">
+        <label for="client_id">Client</label>
+        <input type="text" class="form-control" id="client_id" formControlName="client_id" >
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="camionForm.invalid">Enregistrer</button>
+    </form>
+  </div>
+</div>

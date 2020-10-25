@@ -14,7 +14,6 @@ import { NouveauClientComponent } from './gestion-client/nouveau-client/nouveau-
 import { ModifierClientComponent } from './gestion-client/modifier-client/modifier-client.component';
 import { ModifierProduitComponent } from './gestion-produit/modifier-produit/modifier-produit.component';
 import { NouveauProduitComponent } from './gestion-produit/nouveau-produit/nouveau-produit.component';
-import { ListCamionComponent } from './gestion-camion/list-camion/list-camion.component';
 import { NouveauCamionComponent } from './gestion-camion/nouveau-camion/nouveau-camion.component';
 import { ModifierCamionComponent } from './gestion-camion/modifier-camion/modifier-camion.component';
 import { AuthComponent } from './auth/auth.component';
@@ -25,6 +24,7 @@ import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
 import {AuthGuardService} from "./services/auth-guard.service";
 import {ClientService} from "./services/client.service";
 import {ProduitService} from "./services/produit.service";
+import {UtilService} from "./services/util.service";
 
 
 
@@ -40,7 +40,6 @@ import {ProduitService} from "./services/produit.service";
     ModifierClientComponent,
     ModifierProduitComponent,
     NouveauProduitComponent,
-    ListCamionComponent,
     NouveauCamionComponent,
     ModifierCamionComponent,
     AuthComponent,
@@ -60,7 +59,8 @@ import {ProduitService} from "./services/produit.service";
     ClientService,
     AuthService,
     AuthGuardService,
-    ProduitService
+    ProduitService,
+    UtilService
   ],
   bootstrap: [AppComponent]
 })

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {ClientModel} from "../model/client.model";
 import {Subject} from "rxjs";
 import {HttpClient} from "@angular/common/http";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +26,7 @@ export class ClientService {
       this.emiClientsSubject();})
 
   }
-  getAllClient(){
+  getAllClient()  {
     this.httpClient.get<ClientModel[]>('http://localhost:9090/clients')
       .subscribe(resp=> {
           this.clients = resp;
@@ -34,7 +35,14 @@ export class ClientService {
       );
 
   }
-  deleteClient(id:number){
+  getClient(id : number) : any {
+
+    this.httpClient.get<ClientModel>('http://localhost:9090/clients/id/'+id)
+
+      .subscribe((resp)=> { return resp},
+                 error=> alert('Erreur : '+error));
+  }
+  deleteClient(id : number){
     this.httpClient.delete('http://localhost:9090/clients/id/'+id)
       .subscribe(resp=>this.getAllClient()
       ,error => alert('Erreur : '+error));

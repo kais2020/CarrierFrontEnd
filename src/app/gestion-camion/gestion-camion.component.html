@@ -1,16 +1,12 @@
-<div class="container">
-  <nav>
-    <ul class="nav">
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/nouveau-camion-component" routerLinkActive="active">Nouveau Camion</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/modifier-camion-component" routerLinkActive="active">Modifier Camion</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/liste-camion-component" routerLinkActive="active">Liste Camions</a>
-      </li>
-
-    </ul>
-  </nav>
-</div>
+<a routerLink="/nouveau-camion">Nouveau Camion</a>
+<ul class="list-group" *ngFor="let camion of camions">
+  <li class="list-group-item">
+    <div class="navbar-right">
+      <button class="btn btn-success">Edit</button>
+      <button class="btn btn-danger">Delete</button>
+    </div>
+    <h3>{{camion.code}} -- {{camion.matricule}} </h3>
+    <p> Identifiant : {{camion.id}}  Marque : {{camion.marque}}</p>
+    <p> Client : {{camion.client.code}} -- {{camion.client.nom}}</p>
+  </li>
+</ul>

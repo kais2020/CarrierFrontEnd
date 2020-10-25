@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {CamionModel} from "../model/camion.model";
+import {Subscription} from "rxjs";
+import {CamionService} from "../services/camion.service";
 
 @Component({
   selector: 'app-gestion-camion',
@@ -6,10 +9,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./gestion-camion.component.scss']
 })
 export class GestionCamionComponent implements OnInit {
+  camions : CamionModel[];
+  camionSubscription : Subscription;
 
-  constructor() { }
+  constructor(private camionService:CamionService) { }
 
   ngOnInit(): void {
+    this.camionSubscription=this.camionService.camionSubject
+      .subscribe(camions=> this.camions=camions);
+    this.camionService.emiCamionSubject();
   }
 
 }

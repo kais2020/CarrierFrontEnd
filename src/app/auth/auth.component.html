@@ -1,3 +1,14 @@
 <h2>Authentification</h2>
-<button class="btn btn-success" *ngIf="!authStatus" (click)="onSignIn()">Se Connecter</button>
+<div>
+ <div class="container" *ngIf="!authStatus">
+   <label for="login">Login</label>
+   <input type="text" class="form-control" id="login" [(ngModel)]="login">
+ </div>
+  <div class="container" *ngIf="!authStatus">
+    <label for="password">Mot de passe</label>
+    <input type="password" class="form-control" id="password" [(ngModel)]="password">
+  </div>
+
+  <button class="btn btn-success" *ngIf="!authStatus" (click)="onSignIn()">Se Connecter</button>
 <button class="btn btn-danger" *ngIf="authStatus" (click)="onSignOut()">Se Déconnecter</button>
+</div>
