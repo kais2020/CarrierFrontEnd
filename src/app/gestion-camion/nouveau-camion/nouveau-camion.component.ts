@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {CamionService} from "../../services/camion.service";
 import {Router} from "@angular/router";
 import {CamionModel} from "../../model/camion.model";
 import {ClientService} from "../../services/client.service";
 import {ClientModel} from "../../model/client.model";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-nouveau-camion',
@@ -13,8 +14,13 @@ import {ClientModel} from "../../model/client.model";
 })
 export class NouveauCamionComponent implements OnInit {
   camionForm : FormGroup;
-  clientRechercher:ClientModel
-  client_id:number;
+  listClient:ClientModel[];
+  clientSubscription:Subscription;
+  clientData: any;
+
+
+
+
 
   constructor(private formBuilder : FormBuilder,
               private camionService : CamionService,
@@ -23,6 +29,10 @@ export class NouveauCamionComponent implements OnInit {
 
   ngOnInit(): void {
     this.initForm();
+    this.clientSubscription=this.clientService.clientSubject
+      .subscribe(clients=>this.listClient=clients);
+    this.clientService.getAllClient();
+
   }
   initForm(){
     this.camionForm=this.formBuilder.group({
@@ -30,22 +40,26 @@ export class NouveauCamionComponent implements OnInit {
       code:'',
       matricule:'',
       marque:'',
-      client_id:''
+      client:''
     });
   }
 
   onSubmitForm() {
     const formValue =this.camionForm.value;
-    this.clientService.getClient(this.client_id);
-    console.log(this.clientRechercher);
     const newCamion = new CamionModel(
       formValue['id'],
       formValue['code'],
       formValue['matricule'],
       formValue['marque'],
-      this.clientRechercher
+      JSON.parse(this.clientData)
     );
-    this.camionService.addCamion(newCamion);
+
+console.log(newCamion);
+
+   this.camionService.addCamion(newCamion);
     this.router.navigate(['/gestion-camion']);
+
+
+
   }
 }

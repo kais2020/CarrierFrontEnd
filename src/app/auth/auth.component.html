@@ -1,14 +1,19 @@
-<h2>Authentification</h2>
-<div>
+<div class="row">
+  <div class="col-sm-8 col-sm-offset-2">
+    <h2>Authentification</h2>
+<form [formGroup]="signInForm" (ngSubmit)="onSignIn()" *ngIf="!authStatus">
  <div class="container" *ngIf="!authStatus">
    <label for="login">Login</label>
-   <input type="text" class="form-control" id="login" [(ngModel)]="login">
+   <input type="text" class="form-control" id="login" formControlName="login" >
  </div>
   <div class="container" *ngIf="!authStatus">
     <label for="password">Mot de passe</label>
-    <input type="password" class="form-control" id="password" [(ngModel)]="password">
+    <input type="password" class="form-control" id="password" formControlName="password" >
   </div>
 
-  <button class="btn btn-success" *ngIf="!authStatus" (click)="onSignIn()">Se Connecter</button>
-<button class="btn btn-danger" *ngIf="authStatus" (click)="onSignOut()">Se Déconnecter</button>
+  <button class="btn btn-success"  type="submit">Se Connecter</button>
+
+</form>
+<p class="text-danger">{{msgErreur}}</p>
+  </div>
 </div>

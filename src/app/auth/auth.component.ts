@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from "../services/auth.service";
 import {Router} from "@angular/router";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-auth',
@@ -9,24 +10,32 @@ import {Router} from "@angular/router";
 })
 export class AuthComponent implements OnInit {
   authStatus :boolean;
-  login:string;
-  password:string;
-  constructor(private authService : AuthService,private router:Router) { }
+  msgErreur: string;
+  signInForm: FormGroup;
+  constructor(private formBuilder:FormBuilder,
+              private authService : AuthService,
+              private router:Router) { }
 
   ngOnInit(): void {
+    this.initForm();
     this.authStatus=this.authService.isAuth;
   }
  onSignIn(){
-    this.authService.signIn(this.login,this.password).then(
+    const signForm=this.signInForm.value;
+    this.authService.signIn(signForm['login'],signForm['password']).then(
       ()=> {
          this.authStatus=this.authService.isAuth;
          console.log(this.authStatus);
          this.router.navigate(['bienvenue']);
-      }
+      },error=>{this.msgErreur=error;}
     )
  }
- onSignOut(){
-    this.authService.signOut();
-    this.authStatus=this.authService.isAuth;
- }
+
+
+  private initForm() {
+    this.signInForm=this.formBuilder.group({
+      login:['',Validators.required],
+      password:['',Validators.required]
+    });
+  }
 }

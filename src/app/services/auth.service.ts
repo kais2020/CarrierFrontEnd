@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {UtilService} from "./util.service";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -8,21 +9,24 @@ export class AuthService {
   isAuth:boolean=false;
 
 
-  constructor(private utilService:UtilService) { }
+  constructor(private utilService:UtilService,
+              private router:Router) { }
   signIn(login:string,password:string){
     return new Promise(
-      (resolve) =>{
+      (resolve,reject) =>{
 
-        this.utilService.rechercheUtilParLoginPassword(login,password).then(
+        this.utilService.signInWithLoginAndPassword(login,password).then(
           ()=>{
             this.isAuth=true;
             resolve();
-          }
+          },
+          (error)=>{reject(error);}
         );
       } );
 
   }
   signOut(){
     this.isAuth=false;
+    this.router.navigate(['/auth'])
   }
 }

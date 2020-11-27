@@ -2,9 +2,6 @@
   <nav>
     <ul class="nav">
       <li class="nav-item">
-        <a class="nav-link" routerLink="/auth" routerLinkActive="active">Authantification</a>
-      </li>
-      <li class="nav-item">
         <a class="nav-link" routerLink="/gestion-produit" routerLinkActive="active">Produit</a>
       </li>
       <li class="nav-item">
@@ -15,6 +12,15 @@
       </li>
       <li class="nav-item">
         <a class="nav-link " routerLink="/gestion-blclient" routerLinkActive="active">Bl Client</a>
+      </li>
+    </ul>
+    <ul class="navbar-right">
+      <li class="nav-item" >
+        <a class="nav-link" routerLink="/gestion-util" routerLinkActive="active">Utilisateur</a>
+      </li>
+      <li class="nav-item" >
+        <a class="nav-link" routerLink="/auth" *ngIf="!authService.isAuth" routerLinkActive="active">Connexion</a>
+        <a class="nav-link" *ngIf="authService.isAuth" style="cursor: pointer" (click)="onSignOut()" >Déconnexion</a>
       </li>
     </ul>
   </nav>

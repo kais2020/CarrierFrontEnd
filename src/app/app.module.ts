@@ -2,8 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
-
 import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
 import { GestionClientComponent } from './gestion-client/gestion-client.component';
@@ -25,6 +25,10 @@ import {AuthGuardService} from "./services/auth-guard.service";
 import {ClientService} from "./services/client.service";
 import {ProduitService} from "./services/produit.service";
 import {UtilService} from "./services/util.service";
+import { NouveauUtilComponent } from './auth/gestion-util/nouveau-util/nouveau-util.component';
+import { GestionUtilComponent } from './auth/gestion-util/gestion-util.component';
+import { RechercheClientComponent } from './gestion-client/recherche-client/recherche-client.component';
+
 
 
 
@@ -46,6 +50,9 @@ import {UtilService} from "./services/util.service";
     BienvenueComponent,
     SingleClientComponent,
     FourOhFourComponent,
+    NouveauUtilComponent,
+    GestionUtilComponent,
+    RechercheClientComponent,
 
   ],
   imports: [

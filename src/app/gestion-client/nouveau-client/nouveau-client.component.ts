@@ -43,7 +43,7 @@ export class NouveauClientComponent implements OnInit {
       formValue['codeTVA']
 
     );
-    this.clientService.addClient(newClient);
+    this.clientService.postClient(newClient);
     this.router.navigate(['/gestion-client']);
 
   }

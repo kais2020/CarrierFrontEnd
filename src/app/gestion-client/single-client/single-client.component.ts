@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ClientService} from "../../services/client.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {ClientModel} from "../../model/client.model";
 
 @Component({
@@ -10,12 +10,21 @@ import {ClientModel} from "../../model/client.model";
 })
 export class SingleClientComponent implements OnInit {
   client : ClientModel;
-  constructor(private clientService : ClientService ,private route : ActivatedRoute) { }
+  constructor(private clientService : ClientService ,
+              private route : ActivatedRoute,
+              private router:Router) { }
 
   ngOnInit(): void {
+    this.client=new ClientModel(null,'','','','','');
     const id = this.route.snapshot.params['id'];
-   // this.client=this.clientService.getClientById(+id);
-  //  this.clientService.emitClientSubject();
+    this.clientService.getSingleClient(id).then(
+      (resp:ClientModel)=>{
+        this.client=resp;
+      }
+    );
+  }
+  onBack(){
+    this.router.navigate(['/gestion-client'])
   }
 
 }

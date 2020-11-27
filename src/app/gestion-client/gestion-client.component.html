@@ -2,13 +2,10 @@
 <ul class="list-group" *ngFor="let client of clients">
   <li class="list-group-item">
     <div class="navbar-right">
-      <button class="btn btn-success">Edit</button>
-      <button class="btn btn-danger" (click)="deleteClient(client.id)">Delete</button>
+      <button class="btn btn-success" >Edit</button>
+      <button class="btn btn-danger" (click)="onDeleteClient(client.id)">Delete</button>
     </div>
-    <h3> {{client.code}} : {{client.nom}}</h3>
-    <p>Identifiant : {{client.id}} -- Code TVA : {{client.codeTVA}}</p>
-    <p>Adresse : {{client.adresse}} -- {{client.ville}}</p>
-
-
+    <h3><a style="cursor: pointer" (click)="onViewClient(client.id)">{{client.code}} -- {{client.nom}}</a></h3>
+    <p>Adresse : {{client.adresse}} -- Ville : {{client.ville}}</p>
   </li>
 </ul>

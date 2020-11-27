@@ -2,6 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ClientModel} from "../model/client.model";
 import {Subscription} from "rxjs";
 import {ClientService} from "../services/client.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-gestion-client',
@@ -12,24 +13,28 @@ export class GestionClientComponent implements OnInit,OnDestroy {
   clients :ClientModel[];
   clientSubscription : Subscription;
 
-  constructor(private clientService: ClientService) {
+  constructor(private clientService: ClientService,
+              private router:Router) {
 
   }
-
   ngOnInit(): void {
     this.clientSubscription=this.clientService.clientSubject.subscribe(
       (clients)=>{
         this.clients=clients
       }
     );
-    this.clientService.emiClientsSubject();
+    this.clientService.getAllClient();
   }
   ngOnDestroy() {
     this.clientSubscription.unsubscribe();
   }
-
-  deleteClient(id: number) {
+  onDeleteClient(id: number) {
     this.clientService.deleteClient(id);
+
+  }
+  onViewClient(id: number) {
+
+    this.router.navigate(['/single-client',id]);
 
   }
 }

@@ -11,7 +11,6 @@ export class CamionService {
   camionSubject = new Subject<CamionModel[]>();
 
   constructor(private httpClient: HttpClient) {
-    this.getAllCamion();
   }
   emiCamionSubject(){
     this.camionSubject.next(this.camions);
@@ -20,14 +19,19 @@ export class CamionService {
     this.httpClient.get<CamionModel[]>('http://localhost:9090/camions')
       .subscribe(resp=>{
         this.camions=resp;
-        this.emiCamionSubject()});
+        this.emiCamionSubject();});
   }
   addCamion(camion :CamionModel){
     this.httpClient.post('http://localhost:9090/camions',camion)
       .subscribe(resp=>{
         this.getAllCamion();
-        this.emiCamionSubject()}
+        this.emiCamionSubject();}
       ,error => alert("Erreur : "+error));
+  }
+  deleteCamion(id:number){
+   return this.httpClient.delete('')
+      .subscribe(resp=>'Suprission effectué',
+        error =>  'Erreur : '+error);
   }
 
 }

@@ -1,0 +1,11 @@
+<a routerLink="/nouveau-util">Nouveau Utilisateur</a>
+<ul class="list-group" *ngFor="let util of utils">
+  <li class="list-group-item">
+    <div class="navbar-right">
+    <button class="btn btn-success">Edit</button>
+    <button class="btn btn-danger">Delete</button>
+    </div>
+    <h3>{{util.nom}}</h3>
+    <p>Login : {{util.login}}</p>
+  </li>
+</ul>

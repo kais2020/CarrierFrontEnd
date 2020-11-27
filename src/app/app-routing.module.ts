@@ -15,6 +15,8 @@ import {BienvenueComponent} from "./bienvenue/bienvenue.component";
 import {SingleClientComponent} from "./gestion-client/single-client/single-client.component";
 import {FourOhFourComponent} from "./four-oh-four/four-oh-four.component";
 import {AuthGuardService} from "./services/auth-guard.service";
+import {GestionUtilComponent} from "./auth/gestion-util/gestion-util.component";
+import {NouveauUtilComponent} from "./auth/gestion-util/nouveau-util/nouveau-util.component";
 
 
 const routes: Routes = [
@@ -26,11 +28,13 @@ const routes: Routes = [
   { path: 'modifier-client' , component: ModifierClientComponent },
   { path: 'modifier-produit' , component: ModifierProduitComponent },
   { path: 'nouveau-produit' , component: NouveauProduitComponent },
-  { path: 'liste-client/:id' , component: SingleClientComponent},
+  { path: 'single-client/:id' , component: SingleClientComponent},
   { path: 'nouveau-camion' , component: NouveauCamionComponent },
   { path: 'modifier-camion' , component: ModifierCamionComponent },
   { path: 'auth', component: AuthComponent },
   { path: 'bienvenue' , component: BienvenueComponent},
+  { path:'gestion-util',canActivate:[AuthGuardService],component: GestionUtilComponent},
+  { path:'nouveau-util',component: NouveauUtilComponent},
   { path: '' , component : BienvenueComponent},
   { path: 'not-found' , component : FourOhFourComponent},
   { path: '**' , redirectTo : 'not-found'}

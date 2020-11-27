@@ -17,7 +17,10 @@ export class GestionCamionComponent implements OnInit {
   ngOnInit(): void {
     this.camionSubscription=this.camionService.camionSubject
       .subscribe(camions=> this.camions=camions);
-    this.camionService.emiCamionSubject();
+    this.camionService.getAllCamion();
+  }
+  onDeleteCamion(id:number){
+    this.camionService
   }
 
 }

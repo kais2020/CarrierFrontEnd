@@ -1,0 +1,21 @@
+<input type="text" id="myCode" (keyup)="findClient('myCode',1)" placeholder="recherche par code..">
+<input type="text" id="myNom" (keyup)="findClient('myNom',2)" placeholder="recherche par nom..">
+<div>
+<table id="myTable" class="table table-striped header-fixed" >
+  <thead>
+  <tr>
+    <th>Id</th><th>Code</th><th>Nom</th><th>Code Tva</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let client of clients" >
+    <td ><input type="radio" name="choix" #element value="{{client | json}}" (change)="onChange(element.value)">  {{client.id}} </td>
+    <td>{{client.code}}</td>
+    <td>{{client.nom}}</td>
+    <td>{{client.codeTVA}}</td>
+  </tr>
+  </tbody>
+
+</table>
+
+</div>

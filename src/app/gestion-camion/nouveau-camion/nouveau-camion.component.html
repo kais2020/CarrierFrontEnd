@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" xmlns="http://www.w3.org/1999/html">
   <div class="col-sm-8 col-sm-offset-2">
     <form [formGroup]="camionForm" (ngSubmit)="onSubmitForm()">
       <div class="form-group">
@@ -13,11 +13,29 @@
         <label for="marque">Marque</label>
         <input type="text" class="form-control" id="marque" formControlName="marque">
       </div>
+
       <div class="form-group">
-        <label for="client_id">Client</label>
-        <input type="text" class="form-control" id="client_id" formControlName="client_id" >
+        <label for="client">Client</label>
+        <div>
+        <app-recherche-client id="client" (childEvent)="clientData=$event"></app-recherche-client>
+        </div>
+        <!--
+        <label for="source">How did you hear about us?</label>
+        <datalist id="sources">
+          <select *ngFor="let client of listClient" [ngValue]="client" id="client"  formControlName="client" >
+            <option   >{{client.code}} -- {{client.nom}}</option>
+          </select>
+        </datalist>
+        <input id="source" name="source" list="sources">
+
+
+        <label for="client"></label>
+        <select class="form-control"   id="client" formControlName="client" >
+          <option  [ngValue]="client" *ngFor="let client of listClient" >{{client.code}} -- {{client.nom}}</option>
+        </select>-->
       </div>
       <button type="submit" class="btn btn-primary" [disabled]="camionForm.invalid">Enregistrer</button>
     </form>
   </div>
 </div>
+
