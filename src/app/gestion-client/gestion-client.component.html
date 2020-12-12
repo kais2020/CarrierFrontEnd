@@ -1,5 +1,8 @@
 <a routerLink="/nouveau-client">Nouveau Client</a>
-<ul class="list-group" *ngFor="let client of clients">
+<label>...</label>
+<input type="text" id="myCode" placeholder="Recherche par code ..." #code (keyup)="findClientByCode(code.value)">
+<input type="text" id="myNom" placeholder="Recherche par nom ..." #nom (keyup)="findClientByNom(nom.value)">
+<ul class="list-group" *ngFor="let client of listClient">
   <li class="list-group-item">
     <div class="navbar-right">
       <button class="btn btn-success" >Edit</button>

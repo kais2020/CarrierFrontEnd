@@ -1,0 +1,25 @@
+.global{
+  width:100%;
+}
+.block50,.block30, .block70, .block40, .block25{
+  display: inline-block;
+  vertical-align: top;
+}
+.block50 {
+  width:50%;
+}
+
+.block30 {
+  width: 30%;
+}
+.block70 {
+  width:70%;
+}
+
+.block40 {
+  width: 40%;
+}
+
+.block25 {
+  width: 25%;
+}

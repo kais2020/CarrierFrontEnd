@@ -1,16 +1,12 @@
-<div class="container">
-  <nav>
-    <ul class="nav">
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/nouveau-blclient" routerLinkActive="active">Nouveau BL Client</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/modifier-blclient" routerLinkActive="active">Modifier BL Client</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/liste-blclient" routerLinkActive="active">Liste BL Client</a>
-      </li>
-
-    </ul>
-  </nav>
-</div>
+<a routerLink="/nouveau-blclient">Nouveau Bon de Livraison</a>
+<ul class="list-group" *ngFor="let bl of blClients">
+  <li class="list-group-item">
+    <div class="navbar-right">
+      <button class="btn btn-success">Edit</button>
+      <button class="btn btn-danger">Delete</button>
+    </div>
+    <h3>{{bl.num}} -- {{bl.dateBl}} </h3>
+    <p> Article : {{bl.produit.nom}}  Qte : {{bl.qte}}  TTC : {{bl.ttc}}</p>
+    <p> Client : {{bl.client.code}} -- {{bl.client.nom}}</p>
+  </li>
+</ul>

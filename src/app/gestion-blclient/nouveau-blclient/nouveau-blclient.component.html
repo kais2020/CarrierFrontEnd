@@ -1,0 +1,97 @@
+<div class="col-sm-8 col-sm-offset-2">
+  <form [formGroup]="blClientForm" (ngSubmit)="onSubmitForm()">
+    <div  class="form-group global">
+      <div class="block50">
+        <label for="num">Num</label>
+        <input type="text" id="num" class="form-control" formControlName="num">
+      </div>
+      <div class="block50">
+        <label for="dateBL">Date</label>
+        <input type="datetime-local" class="form-control" id="dateBl"  formControlName="dateBl">
+      </div>
+    </div>
+    <div class="form-group global" >
+      <div class="block30">
+      <label for="code-client" >Code client</label>
+
+      <input list="clients" type="text" class="form-control" id="code-client" #clt
+            (keyup)="onClientSelectionner(clt.value)"  formControlName="client">
+      <datalist id="clients" >
+        <option *ngFor="let client of listClient" value="{{client.code}}"  >{{client.nom}} -- {{client.adresse}}</option>
+
+      </datalist>
+      </div>
+      <div class="block70">
+        <label for="nom-client">Nom Client</label>
+      <input id="nom-client" type="text" class="form-control" value="{{clientSelectionner.nom}}" disabled="true">
+</div>
+
+<!--
+      <label for="client">Client</label>
+      <select class="form-control" id="client" formControlName="client">
+
+        <option *ngFor="let client of listClient" value="{{client | json}}"  >{{client.code}} -- {{client.nom}}</option>
+      </select>-->
+    </div>
+    <div class="form-group">
+      <div class="block30">
+      <label for="camion">Matricule</label>
+      <input list="camions" class="form-control" type="text" id="camion"
+             (keyup)="onCamionSelectionner()" formControlName="camion">
+      <datalist id="camions" >
+        <option *ngFor="let camion of listCamion" value="{{camion.matricule}}" >{{camion.marque}}</option>
+      </datalist>
+      </div>
+      <div class="block40">
+        <label for="matricule">Marque</label>
+        <input id="matricule" class="form-control" type="text" disabled="true" value="{{camionSelectionner.marque}}">
+
+      </div>
+      <div class="block30">
+        <label for="poids">Poid</label>
+        <input id="poids" class="form-control" type="text" disabled="true" value="{{camionSelectionner.code}}">
+
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="block30">
+      <label for="produit">Produit</label>
+      <input list="produits" class="form-control" type="text" id="produit"
+             (keyup)="onProduitSelectionner()" formControlName="produit">
+      <datalist id="produits" >
+        <option *ngFor="let produit of listProduit" value="{{produit.code}}" >{{produit.nom}} -- {{produit.prix}}</option>
+      </datalist>
+      </div>
+      <div class="block40">
+        <label for="designation">Désignation</label>
+        <input id="designation" class="form-control" type="text" disabled="true" value="{{produitSelectionner.nom}}">
+
+      </div>
+      <div class="block30">
+        <label for="pu">PU HT</label>
+        <input id="pu" class="form-control" type="text" disabled="true" value="{{produitSelectionner.prix}}">
+
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="block25">
+      <label for="qte">Qte</label>
+      <input type="number" id="qte" class="form-control" formControlName="qte" #qte
+      (keyup)="onCalcule(qte.value)">
+    </div>
+      <div class="block25">
+        <label for="ht">HT</label>
+        <input type="text" id="ht" class="form-control" formControlName="ht" value="{{ht}}">
+      </div>
+      <div class="block25">
+        <label for="taxe">Taxe</label>
+        <input type="text" id="taxe" class="form-control" formControlName="taxe" value="{{taxe}}">
+      </div>
+      <div class="block25">
+        <label for="tva">TVA</label>
+        <input type="text" id="tva" class="form-control" formControlName="tva"  value="{{tva}}">
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary" >Enregistrer</button>
+  </form>
+</div>

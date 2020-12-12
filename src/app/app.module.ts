@@ -28,6 +28,7 @@ import {UtilService} from "./services/util.service";
 import { NouveauUtilComponent } from './auth/gestion-util/nouveau-util/nouveau-util.component';
 import { GestionUtilComponent } from './auth/gestion-util/gestion-util.component';
 import { RechercheClientComponent } from './gestion-client/recherche-client/recherche-client.component';
+import { NouveauBlclientComponent } from './gestion-blclient/nouveau-blclient/nouveau-blclient.component';
 
 
 
@@ -53,6 +54,7 @@ import { RechercheClientComponent } from './gestion-client/recherche-client/rech
     NouveauUtilComponent,
     GestionUtilComponent,
     RechercheClientComponent,
+    NouveauBlclientComponent,
 
   ],
   imports: [

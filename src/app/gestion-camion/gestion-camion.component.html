@@ -1,5 +1,8 @@
 <a routerLink="/nouveau-camion">Nouveau Camion</a>
-<ul class="list-group" *ngFor="let camion of camions">
+<label>...</label>
+<input type="text" placeholder="Recherche par matricule..." #mat (keyup)="findCamionByMatricule(mat.value)">
+<input type="text" placeholder="Recherche par client..." #client (keyup)="findCamionByClient(client.value)">
+<ul class="list-group" *ngFor="let camion of listCamion">
   <li class="list-group-item">
     <div class="navbar-right">
       <button class="btn btn-success">Edit</button>

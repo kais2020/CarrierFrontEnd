@@ -17,6 +17,7 @@ import {FourOhFourComponent} from "./four-oh-four/four-oh-four.component";
 import {AuthGuardService} from "./services/auth-guard.service";
 import {GestionUtilComponent} from "./auth/gestion-util/gestion-util.component";
 import {NouveauUtilComponent} from "./auth/gestion-util/nouveau-util/nouveau-util.component";
+import {NouveauBlclientComponent} from "./gestion-blclient/nouveau-blclient/nouveau-blclient.component";
 
 
 const routes: Routes = [
@@ -31,6 +32,7 @@ const routes: Routes = [
   { path: 'single-client/:id' , component: SingleClientComponent},
   { path: 'nouveau-camion' , component: NouveauCamionComponent },
   { path: 'modifier-camion' , component: ModifierCamionComponent },
+  { path: 'nouveau-blclient' , component: NouveauBlclientComponent },
   { path: 'auth', component: AuthComponent },
   { path: 'bienvenue' , component: BienvenueComponent},
   { path:'gestion-util',canActivate:[AuthGuardService],component: GestionUtilComponent},

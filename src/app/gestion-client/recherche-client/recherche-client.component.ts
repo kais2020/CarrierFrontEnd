@@ -51,5 +51,5 @@ export class RechercheClientComponent implements OnInit {
     this.childEvent.emit(value);
 
   }
-  
+
 }

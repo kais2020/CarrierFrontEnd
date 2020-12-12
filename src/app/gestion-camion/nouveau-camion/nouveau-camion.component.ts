@@ -54,8 +54,6 @@ export class NouveauCamionComponent implements OnInit {
       JSON.parse(this.clientData)
     );
 
-console.log(newCamion);
-
    this.camionService.addCamion(newCamion);
     this.router.navigate(['/gestion-camion']);
 

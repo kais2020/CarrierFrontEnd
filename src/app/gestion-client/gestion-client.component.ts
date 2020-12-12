@@ -11,6 +11,7 @@ import {Router} from "@angular/router";
 })
 export class GestionClientComponent implements OnInit,OnDestroy {
   clients :ClientModel[];
+  listClient:ClientModel[];
   clientSubscription : Subscription;
 
   constructor(private clientService: ClientService,
@@ -20,7 +21,8 @@ export class GestionClientComponent implements OnInit,OnDestroy {
   ngOnInit(): void {
     this.clientSubscription=this.clientService.clientSubject.subscribe(
       (clients)=>{
-        this.clients=clients
+        this.clients=clients;
+        this.listClient=clients;
       }
     );
     this.clientService.getAllClient();
@@ -35,6 +37,16 @@ export class GestionClientComponent implements OnInit,OnDestroy {
   onViewClient(id: number) {
 
     this.router.navigate(['/single-client',id]);
+
+  }
+
+  findClientByNom(value: string) {
+    this.listClient=this.clients.filter(client=>client.nom.toLowerCase().includes(value.toLowerCase()));
+
+  }
+
+  findClientByCode(value: string) {
+    this.listClient=this.clients.filter(client=>client.code.toLowerCase().includes(value.toLowerCase()));
 
   }
 }
